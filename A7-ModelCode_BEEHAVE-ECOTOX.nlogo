@@ -7965,13 +7965,13 @@ if ETOX_contactexp_oneday
               ]
           ]
         [
-          set ETOX_P_PPPNectarconc ETOX_P_PPPNectarconc - (ln(2) / ETOX_DT50 * ETOX_P_PPPNectarconc) ; The disappearance of the pesticide in the nectar of the crop following a single first-order kinetic
-          set ETOX_P_PPPPollenConc ETOX_P_PPPPollenconc - (ln(2) / ETOX_DT50 * ETOX_P_PPPPollenconc) ; The disappearance of the pesticide in the pollen of the crop following a single first-order kinetic
-          set ETOX_PPPContactDose ETOX_PPPContactDose - (ln(2) / ETOX_DT50 * ETOX_PPPContactDose)
+          set ETOX_P_PPPNectarconc ETOX_P_PPPNectarconc * exp (- ln(2) / ETOX_DT50 ) ; The disappearance of the pesticide in the nectar of the crop following a single first-order kinetic
+          set ETOX_P_PPPPollenConc ETOX_P_PPPPollenConc * exp (- ln(2) / ETOX_DT50 ) ; The disappearance of the pesticide in the pollen of the crop following a single first-order kinetic
+          set ETOX_PPPContactDose ETOX_PPPContactDose * exp (- ln(2) / ETOX_DT50 )
           if ETOX_Water_foraging = true
          [
 
-          set ETOX_WaterConc_Fullday ETOX_WaterConc_Fullday - (ln(2) / ETOX_DT50 * ETOX_WaterConc_Fullday) ; The disappearance of the pesticide in the water source following a single first-order kinetic
+          set ETOX_WaterConc_Fullday ETOX_WaterConc_Fullday * exp (- ln(2) / ETOX_DT50 ) ; The disappearance of the pesticide in the water source following a single first-order kinetic
 
    ]
         ]
@@ -8126,12 +8126,13 @@ to TupdateInternalExposureNectar_ETOX
 
   If ETOX_Degradation_honey
   [
-   set ETOX_HES_C_D0 ETOX_HES_C_D0 - (ln(2) / ETOX_DT50_honey * ETOX_HES_C_D0) ; Dissappearance of the pesticide in the honey following a single first-order kinetic
-   set ETOX_HES_C_D1 ETOX_HES_C_D1 - (ln(2) / ETOX_DT50_honey * ETOX_HES_C_D1) ; Dissappearance of the pesticide in the honey following a single first-order kinetic
-   set ETOX_HES_C_D2 ETOX_HES_C_D2 - (ln(2) / ETOX_DT50_honey * ETOX_HES_C_D2) ; Dissappearance of the pesticide in the honey following a single first-order kinetic
-   set ETOX_HES_C_D3 ETOX_HES_C_D3 - (ln(2) / ETOX_DT50_honey * ETOX_HES_C_D3) ; Dissappearance of the pesticide in the honey following a single first-order kinetic
-   set ETOX_HES_C_D4 ETOX_HES_C_D4 - (ln(2) / ETOX_DT50_honey * ETOX_HES_C_D4) ; Dissappearance of the pesticide in the honey following a single first-order kinetic
-   set ETOX_HES_C_Capped ETOX_HES_C_Capped - (ln(2) / ETOX_DT50_honey * ETOX_HES_C_Capped) ; Dissappearance of the pesticide in the honey following a single first-order kinetic
+   set ETOX_HES_C_D0 ETOX_HES_C_D0 * exp (- ln(2) / ETOX_DT50_honey )  ; Dissappearance of the pesticide in the honey following a single first-order kinetic
+   set ETOX_HES_C_D1 ETOX_HES_C_D1 * exp (- ln(2) / ETOX_DT50_honey )  ; Dissappearance of the pesticide in the honey following a single first-order kinetic
+   set ETOX_HES_C_D2 ETOX_HES_C_D2 * exp (- ln(2) / ETOX_DT50_honey )  ; Dissappearance of the pesticide in the honey following a single first-order kinetic
+   set ETOX_HES_C_D3 ETOX_HES_C_D3 * exp (- ln(2) / ETOX_DT50_honey )  ; Dissappearance of the pesticide in the honey following a single first-order kinetic
+   set ETOX_HES_C_D4 ETOX_HES_C_D4 * exp (- ln(2) / ETOX_DT50_honey )  ; Dissappearance of the pesticide in the honey following a single first-order kinetic
+   set ETOX_HES_C_Capped ETOX_HES_C_Capped * exp (- ln(2) / ETOX_DT50_honey )  ; Dissappearance of the pesticide in the honey following a single first-order kinetic
+
   ]
   ;Calculates swapping of the honey compartments
   if (ETOX_HES_E_Capped + ETOX_HES_E_D4) > 0
@@ -13045,9 +13046,9 @@ ETOX_contactexp_oneday
 -1000
 
 @#$#@#$#@
-# BEEHAVEecotox model
+## BEEHAVEecotox model
 
-This model version was developed to mechanistically integrate exposure and ecotoxicological procedures into the BEEHAVE model (Becher et al. 2014), which can be parameterised with common ecotoxicological regulatory studies. The model is based on the BEEHAVE_BeeMapp2016 available at http://beehave-model.net/download/.
+This model version was developed to include a mechanistic effect (ecotoxicological) module into the BEEHAVE model to link exposure with the hazard profile for the individual honeybees so that colony effects emerge. The model is based on the BEEHAVE_BeeMapp2016 available at http://beehave-model.net/download/.
 
 All the changes to the code are highlighted in the code itself and described in detail in the following manuscript and its supplementary material:
 Preuss T.G., Agatz A., Goussen B., Roeben V., Rumkee J., Zakharova L., Thorbek P. ( ) The BEEHAVEecotox model - Integrating a mechanistic effect module into the honeybee colony model,
@@ -13055,15 +13056,15 @@ submitted to "Environmental Toxicology and Chemistry" journal.
 
 In the code, new variables are marked with "ETOX_" in front of the variable name and new procedures are marked with "_ETOX" at the end of the procedure name. The beginning and the end of all alterations to the BEEHAVE_BeeMapp2016 are marked with "_ADDITION TO THE OFFICIAL MODEL VERSION-START_" and "_ADDITION TO THE OFFICIAL MODEL VERSION-END_".
 
-In the supplementary material to the manuscript, all the alterations to the model and the rationales behind them are described in the format of the ODD protocol (Overview, Design concepts and Details) by Grimm et al. (2006, 2010, 2020).
+In the supplementary material to the manuscript, all the alterations to the model and the rationales behind them are described in the format of the ODD protocol (Overview, Design concepts and Details) by Grimm et al. (Grimm et al. 2006, Grimm et al. 2010, Grimm et al. 2020).
 
-Additionally, all the necessary calculations for the input parameters of the ecotoxicological module as well as input sheets for BehaviorSpace simulations are provided in the validation input excel sheet. Conducted sensitivity analysis and validation simulation settings are also saved as the "Experiments" in the BehaviorSpace of this model version.
+Additionally, all the necessary calculations for the input parameters of the ecotoxicological module as well as input sheets for BehaviorSpace for simulations are provided in the validation input excel sheet. Presented in the manuscript sensitivity analysis and validation simulations are also saved as the "Experiments" in the BehaviorSpace of this model version.
 
 
 # Terms of use of the software BEEHAVEecotox (2021)
 
 
-BEEHAVEecotox (2021) is the implementation of an ecotoxicological module with the associated changes into the model BEEHAVE_BeeMapp2016, developed by Matthias Becher and colleagues (more information on this model is provided below).
+BEEHAVEecotox (2021) is the implementation of the ecotoxicological module and associated changes into the model BEEHAVE_BeeMapp2016, developed by Matthias Becher and colleagues (more information on this model is provided below).
 
 
 This implementation is based on the software platform NetLogo (Wilensky 1999), and can be downloaded for free from https://github.com/ibacon-GmbH-Modelling/BEEHAVEecotox.
@@ -13080,25 +13081,12 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 A copy of the GNU General Public License can be found at http://www.gnu.org/licenses/gpl.html or write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
 
-## References
-
-Becher, M. A., Grimm, V., Thorbek, P., Horn, J., Kennedy, P. J., & Osborne, J. L. (2014). BEEHAVE: a systems model of honeybee colony dynamics and foraging to explore multifactorial causes of colony failure. Journal of Applied Ecology, 51(2), 470-482.
-
-Grimm, V., Berger, U., Bastiansen, F., Eliassen, S., Ginot, V., Giske, J., ... & DeAngelis, D. L. (2006). A standard protocol for describing individual-based and agent-based models. Ecological modelling, 198(1-2), 115-126.
-
-Grimm, V., Berger, U., DeAngelis, D. L., Polhill, J. G., Giske, J., & Railsback, S. F. (2010). The ODD protocol: a review and first update. Ecological modelling, 221(23), 2760-2768.
-
-Grimm, V., Railsback, S. F., Vincenot, C. E., Berger, U., Gallagher, C., DeAngelis, D. L., ... & Ayllón, D. (2020). The ODD protocol for describing agent-based and other simulation models: A second update to improve clarity, replication, and structural realism. Journal of Artificial Societies and Social Simulation, 23(2).
+# Terms of use of the software Beehave_BeeMapp (2015)
 
 
-# Beehave_BeeMapp (2015)
+Beehave (2013) and Beehave_BeeMapp (2015) are implementations of the model BEEHAVE, developed by Matthias Becher and colleagues:
 
-## Terms of use of the software Beehave_BeeMapp (2015)
-
-
-Beehave (2014) and Beehave_BeeMapp (2015) are implementations of the model BEEHAVE, developed by Matthias Becher and colleagues:
-
-Becher, M.A., Grimm, V., Thorbek, P., Horn, J., Kennedy, P.J. & Osborne, J.L. (2014) BEEHAVE: A systems model of honeybee colony dynamics and foraging to explore multifactorial causes of colony failure. _Journal of Applied Ecology_.
+Becher, M.A., Grimm, V., Thorbek, P., Horn, J., Kennedy, P.J. & Osborne, J.L. (2013) BEEHAVE: A systems model of honeybee colony dynamics and foraging to explore multifactorial causes of colony failure. _Journal of Applied Ecology_.
 
 
 This implementation is based on the software platform NetLogo (Wilensky 1999), and can be downloaded for free from http://beehave-model.net/.
@@ -13118,7 +13106,7 @@ A copy of the GNU General Public License can be found at http://www.gnu.org/lice
 
 ## Recommendations when using BEEHAVE:
 
-• Please refer to the BEEHAVE publication (Becher et al. 2014; see above) and the BEEHAVE website (http://beehave-model.net/) when using BEEHAVE.
+• Please refer to the BEEHAVE publication (Becher et al. 2013; see above) and the BEEHAVE website (http://beehave-model.net/) when using BEEHAVE.
 
 • We recommend that any publication or report based on using BEEHAVE shall include, in the Supplementary Material, the very NetLogo file that was used to produce the corresponding figure, table, or other kinds of results, as well as the "Experiments" in the BehaviorSpace and all necessary input files (see Supplementary Material of Becher et al. 2013 as example).
 
