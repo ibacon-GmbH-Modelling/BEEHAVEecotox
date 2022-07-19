@@ -4740,7 +4740,10 @@ to Foraging_collectNectarPollenProc
      set ETOX_PPPNectarDose ETOX_PPPNectarDose - (ETOX_PPPNectarDose * ETOX_HSuptake)
      set ETOX_F_PPPNectarConc ETOX_PPPNectarDose / cropEnergyLoad  ; [µg/kJ = µg / kJ]
      ifelse ETOX_PPPContactDose > 0
-     [set ETOX_PPPContactDose (ETOX_PPPContactDose + [ETOX_PPPContactDose] of flowerPatch knownNectarPatch) / 2]
+     [ifelse ETOX_ContactSum ; if the switch contact sum is switched on
+       [set ETOX_PPPContactDose (ETOX_PPPContactDose + [ETOX_PPPContactDose] of flowerPatch knownNectarPatch)] ;than the contact dose for each flower visit are summed up
+       [set ETOX_PPPContactDose (ETOX_PPPContactDose + [ETOX_PPPContactDose] of flowerPatch knownNectarPatch) / 2] ;else a average of the exposure is calculated
+      ]
      [set ETOX_PPPContactDose (ETOX_PPPContactDose + [ETOX_PPPContactDose] of flowerPatch knownNectarPatch)]
     ;&&ETOX&& END
 ;__________________________________________________ADDITION TO THE OFFICIAL MODEL VERSION-END_________________________________________________________________________________
@@ -4780,7 +4783,10 @@ to Foraging_collectNectarPollenProc
      set ETOX_F_PPPPollenConc [ETOX_P_PPPPollenConc] of flowerPatch knownPollenPatch   ; [µg/g]
      set ETOX_PPPPollenDose [ETOX_P_PPPPollenConc] of flowerPatch knownPollenPatch * collectedPollen ;[µg] = [(µg/g) * g]
      ifelse ETOX_PPPContactDose > 0
-     [set ETOX_PPPContactDose (ETOX_PPPContactDose + [ETOX_PPPContactDose] of flowerPatch knownPollenPatch) / 2]
+     [ifelse ETOX_ContactSum ; if the switch contact sum is switched on
+       [set ETOX_PPPContactDose (ETOX_PPPContactDose + [ETOX_PPPContactDose] of flowerPatch knownNectarPatch)] ;than the contact dose for each flower visit are summed up
+       [set ETOX_PPPContactDose (ETOX_PPPContactDose + [ETOX_PPPContactDose] of flowerPatch knownNectarPatch) / 2] ;else a average of the exposure is calculated
+      ]
      [set ETOX_PPPContactDose (ETOX_PPPContactDose + [ETOX_PPPContactDose] of flowerPatch knownPollenPatch)]
     ;&&ETOX&& END
 ;__________________________________________________ADDITION TO THE OFFICIAL MODEL VERSION-END_________________________________________________________________________________
@@ -11244,7 +11250,7 @@ INPUTBOX
 160
 1956
 ETOX_PPPConcPollen_Red
-27150
+26631
 1
 0
 Number
@@ -11266,7 +11272,7 @@ INPUTBOX
 321
 1956
 ETOX_PPPConcPollen_Green
-27150
+26631
 1
 0
 Number
@@ -11560,7 +11566,7 @@ INPUTBOX
 167
 2380
 ETOX_Forager_contact_LD50
-193.92
+0.6
 1
 0
 Number
@@ -12639,7 +12645,7 @@ SWITCH
 1866
 ETOX_Fixed_PPPnectar:pollen
 ETOX_Fixed_PPPnectar:pollen
-1
+0
 1
 -1000
 
@@ -13035,12 +13041,23 @@ WaterNeed?
 -1000
 
 SWITCH
-16
-1979
-219
-2012
+20
+1962
+223
+1995
 ETOX_contactexp_oneday
 ETOX_contactexp_oneday
+1
+1
+-1000
+
+SWITCH
+21
+2002
+213
+2035
+Etox_ContactSum
+Etox_ContactSum
 1
 1
 -1000
