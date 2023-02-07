@@ -1,7 +1,7 @@
 # BEEHAVEecotox model
 This model version was developed to mechanistically integrate exposure and ecotoxicological procedures into the BEEHAVE model (Becher et al. 2014), which can be parameterised with common ecotoxicological regulatory studies. The model is based on the BEEHAVE_BeeMapp2016 available at http://beehave-model.net/download/.
 
-All the changes to the code are highlighted in the code itself and described in detail in the following manuscript and its supplementary material: Preuss T.G., Agatz A., Goussen B., Roeben V., Rumkee J., Zakharova L., Thorbek P. ( ) The BEEHAVEecotox model - Integrating a mechanistic effect module into the honeybee colony model, submitted to “Environmental Toxicology and Chemistry” journal.
+All the changes to the code are highlighted in the code itself and described in detail in the following paper and its supplementary material: Preuss, T. G., Agatz, A., Goussen, B., Roeben, V., Rumkee, J., Zakharova, L., & Thorbek, P. (2022). The BEEHAVEecotox Model—Integrating a Mechanistic Effect Module into the Honeybee Colony Model. Environmental Toxicology and Chemistry, 41(11), 2870-2882.
 
 In the code, new variables are marked with “ETOX_” in front of the variable name and new procedures are marked with “_ETOX” at the end of the procedure name. The beginning and the end of all alterations to the BEEHAVE_BeeMapp2016 are marked with “ADDITION TO THE OFFICIAL MODEL VERSION-START” and “ADDITION TO THE OFFICIAL MODEL VERSION-END”.
 
