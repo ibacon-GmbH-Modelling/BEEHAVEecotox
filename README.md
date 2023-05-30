@@ -1,7 +1,7 @@
 # BEEHAVEecotox model
 This model version was developed to mechanistically integrate exposure and ecotoxicological procedures into the BEEHAVE model (Becher et al. 2014), which can be parameterised with common ecotoxicological regulatory studies. The model is based on the BEEHAVE_BeeMapp2016 available at http://beehave-model.net/download/.
 
-All the changes to the code are highlighted in the code itself and described in detail in the following manuscript and its supplementary material: Preuss T.G., Agatz A., Goussen B., Roeben V., Rumkee J., Zakharova L., Thorbek P. ( ) The BEEHAVEecotox model - Integrating a mechanistic effect module into the honeybee colony model, submitted to “Environmental Toxicology and Chemistry” journal.
+All the changes to the code are highlighted in the code itself and described in detail in the following manuscript and its supplementary material: Preuss T.G., Agatz A., Goussen B., Roeben V., Rumkee J., Zakharova L., Thorbek P. (2022) The BEEHAVEecotox model - Integrating a mechanistic effect module into the honeybee colony model, Environmental Toxicology and Chemist, 41: 2870- 2882.
 
 In the code, new variables are marked with “ETOX_” in front of the variable name and new procedures are marked with “_ETOX” at the end of the procedure name. The beginning and the end of all alterations to the BEEHAVE_BeeMapp2016 are marked with “ADDITION TO THE OFFICIAL MODEL VERSION-START” and “ADDITION TO THE OFFICIAL MODEL VERSION-END”.
 
@@ -12,9 +12,9 @@ Additionally, all the necessary calculations for the input parameters of the eco
 ## Terms of use of the software BEEHAVEecotox (2021)
 BEEHAVEecotox (2021) is the implementation of an ecotoxicological module with the associated changes into the model BEEHAVE_BeeMapp2016, developed by Matthias Becher and colleagues (more information on this model is provided below).
 
-This implementation is based on the software platform NetLogo (Wilensky 1999), and can be downloaded for free from https://github.com/ibacon-GmbH-Modelling/BEEHAVEecotox.
+This implementation is based on the software platform NetLogo (Wilensky 1999), and can be downloaded for free from https://github.com/BEEHAVE-Model/BEEHAVEecotox.
 
-Please refer to the BEEHAVEecotox publication (Preuss T. G. et al.; see above) when using this version of the BEEHAVE model.
+Please refer to the BEEHAVEecotox publication (Preuss et al., 2022) when using this version of the BEEHAVE model.
 
 ## Copyright and Licence Information for the software BEEHAVEecotox (2021):
 Copyright 2021
@@ -26,13 +26,15 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 A copy of the GNU General Public License can be found at http://www.gnu.org/licenses/gpl.html or write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
 ## References
-Becher, M. A., Grimm, V., Thorbek, P., Horn, J., Kennedy, P. J., & Osborne, J. L. (2014). BEEHAVE: a systems model of honeybee colony dynamics and foraging to explore multifactorial causes of colony failure. Journal of Applied Ecology, 51(2), 470-482.
+Becher, M. A., Grimm, V., Thorbek, P., Horn, J., Kennedy, P. J. & Osborne, J. L. (2014). BEEHAVE: a systems model of honeybee colony dynamics and foraging to explore multifactorial causes of colony failure. Journal of Applied Ecology, 51(2), 470-482.
 
 Grimm, V., Berger, U., Bastiansen, F., Eliassen, S., Ginot, V., Giske, J., … & DeAngelis, D. L. (2006). A standard protocol for describing individual-based and agent-based models. Ecological modelling, 198(1-2), 115-126.
 
-Grimm, V., Berger, U., DeAngelis, D. L., Polhill, J. G., Giske, J., & Railsback, S. F. (2010). The ODD protocol: a review and first update. Ecological modelling, 221(23), 2760-2768.
+Grimm, V., Berger, U., DeAngelis, D. L., Polhill, J. G., Giske, J. & Railsback, S. F. (2010). The ODD protocol: a review and first update. Ecological modelling, 221(23), 2760-2768.
 
 Grimm, V., Railsback, S. F., Vincenot, C. E., Berger, U., Gallagher, C., DeAngelis, D. L., … & Ayllón, D. (2020). The ODD protocol for describing agent-based and other simulation models: A second update to improve clarity, replication, and structural realism. Journal of Artificial Societies and Social Simulation, 23(2).
+
+Preuss, T.G., Agatz, A., Goussen, B., Roeben, V., Rumkee, J., Zakharova, L. & Thorbek, P. (2022). The BEEHAVEecotox model - Integrating a mechanistic effect module into the honeybee colony model, Environmental Toxicology and Chemist, 41: 2870- 2882.
 
 # Beehave_BeeMapp (2015)
 ## Terms of use of the software Beehave_BeeMapp (2015)
