@@ -1,4 +1,8 @@
 
+
+;; This is an UPDATED VERSION of BEEHAVEecotox (Preuss et al. 2022). For more information, see "Info" tab of this Netlogo file.
+
+
 ;THIS IS NOT THE OFFICIAL BEEHAVE OR BEEMAPP VERSION!
 ;The beginning and the end of all alterations to the official BEEHAVE version are marked with "_ADDITION TO THE OFFICIAL MODEL VERSION-START_" and "_ADDITION TO THE OFFICIAL MODEL VERSION-END_"
 
@@ -8127,7 +8131,7 @@ to TExposure_at_patch_ETOX
 
           ;recalculates the concentration in the patch from µg ai/L into µgAI/mol
           let ETOX_PPPNectarconc_mol 0  ; ETOX UPDATE 2023 avoid division by 0
-          carefully [set ETOX_PPPNectarconc_mol ETOX_PPPNectarconc_L / nectarConcFlowerPatch] []  ;[µg/mol] = [µg/l * l/mol]  ; *MB* ViBee avoid div.0 for cereals
+          carefully [set ETOX_PPPNectarconc_mol ETOX_PPPNectarconc_L / nectarConcFlowerPatch] []  ;[µg/mol] = [µg/l * l/mol]
 
 
 
@@ -13442,13 +13446,22 @@ NIL
 1
 
 @#$#@#$#@
+## BEEHAVEecotox-landscape model
+
+This is an update of the BEEHAVEecotox module by Preuss et al. 2022 (see below). BEEHAVEecotox added ecotoxicological module to the BEEHAVE_BeeMapp2016 version of the original BEEHAVE model (Becher et al. 2014). BEEHAVEecotox is only able to apply pesticide exposure to the two default patches defined on the interface, but not, when more realistic maps are loaded via an input file. The extension BEEHAVEecotox-landscape now allows the simulation of complex landscapes while running the ecotoxicological model.
+
+For more information regarding new input files and and format, the documentation and how to use the model see the associated README file, the ODD amendment and the update of the manual.
+
+
+
 ## BEEHAVEecotox model
 
 This model version was developed to include a mechanistic effect (ecotoxicological) module into the BEEHAVE model to link exposure with the hazard profile for the individual honeybees so that colony effects emerge. The model is based on the BEEHAVE_BeeMapp2016 available at http://beehave-model.net/download/.
 
-All the changes to the code are highlighted in the code itself and described in detail in the following manuscript and its supplementary material:
-Preuss T.G., Agatz A., Goussen B., Roeben V., Rumkee J., Zakharova L., Thorbek P. ( ) The BEEHAVEecotox model - Integrating a mechanistic effect module into the honeybee colony model,
-submitted to "Environmental Toxicology and Chemistry" journal.
+All the changes to the code are highlighted in the code itself and described in detail in the following publication and its supplementary material:
+
+Preuss, T. G., Agatz, A., Goussen, B., Roeben, V., Rumkee, J., Zakharova, L., & Thorbek, P. (2022). The BEEHAVEecotox model — Integrating a mechanistic effect module into the honeybee colony model. Environmental Toxicology and Chemistry, 41(11), 2870-2882.
+
 
 In the code, new variables are marked with "ETOX_" in front of the variable name and new procedures are marked with "_ETOX" at the end of the procedure name. The beginning and the end of all alterations to the BEEHAVE_BeeMapp2016 are marked with "_ADDITION TO THE OFFICIAL MODEL VERSION-START_" and "_ADDITION TO THE OFFICIAL MODEL VERSION-END_".
 

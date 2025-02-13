@@ -1,13 +1,47 @@
-# BEEHAVEecotox model
-This model version was developed to mechanistically integrate exposure and ecotoxicological procedures into the BEEHAVE model (Becher et al. 2014), which can be parameterised with common ecotoxicological regulatory studies. The model is based on the BEEHAVE_BeeMapp2016 available at http://beehave-model.net/download/.
 
-All the changes to the code are highlighted in the code itself and described in detail in the following manuscript and its supplementary material: Preuss T.G., Agatz A., Goussen B., Roeben V., Rumkee J., Zakharova L., Thorbek P. (2022) The BEEHAVEecotox model - Integrating a mechanistic effect module into the honeybee colony model, Environmental Toxicology and Chemist, 41: 2870- 2882.
+BEEHAVEecotox landscape extension - general information
 
-In the code, new variables are marked with “ETOX_” in front of the variable name and new procedures are marked with “_ETOX” at the end of the procedure name. The beginning and the end of all alterations to the BEEHAVE_BeeMapp2016 are marked with “ADDITION TO THE OFFICIAL MODEL VERSION-START” and “ADDITION TO THE OFFICIAL MODEL VERSION-END”.
+The landscape extension of the BEEHAVEecotox model (Preuss et a. 2022) was developed in Netlogo 5.3.1, 
+which can be downloaded for free: https://ccl.northwestern.edu/netlogo/5.3.1/
 
-In the supplementary material to the manuscript, all the alterations to the model and the rationales behind them are described in the format of the ODD protocol (Overview, Design concepts and Details) by Grimm et al. (2006, 2010, 2020).
+Once Netlogo is installed, the model file "BEEHAVE_ETOX_landscape.nlogo" can be opened and run.
 
-Additionally, all the necessary calculations for the input parameters of the ecotoxicological module as well as input sheets for BehaviorSpace simulations are provided in the validation input excel sheet. Conducted sensitivity analysis and validation simulation settings are also saved as the “Experiments” in the BehaviorSpace of this model version.
+For a general description of the BEEHAVE model and a manual see supplementary material in:
+	Becher, M. A., Grimm, V., Thorbek, P., Horn, J., Kennedy, P. J., & Osborne, J. L. (2014). 
+	BEEHAVE: a systems model of honeybee colony dynamics and foraging to explore multifactorial causes of colony failure. 
+	Journal of Applied Ecology, 51(2), 470-482. 
+	
+	or at the BEEHAVE website: https://beehave-model.net/
+
+The BEEHAVEetcotox model is published and described in detail in: 
+	Preuss, T. G., Agatz, A., Goussen, B., Roeben, V., Rumkee, J., Zakharova, L., & Thorbek, P. (2022). 
+	The BEEHAVEecotox Model—Integrating a Mechanistic Effect Module into the Honeybee Colony Model. 
+	Environmental Toxicology and Chemistry, 41(11), 2870-2882.
+	
+Changes to the code made for this landscape extension version are described in "R2260099-1_ODD_Amendment_BEEHAVEecotox_lanscape_extension".
+
+Instructions how to apply the new feature are given in "R2260099-2_Manual_BEEHAVEecotox_landscape_extension".
+
+The model package comes with a selection of input files:
+	A new substance input file, defining the properties of pesticides:
+		- "SubstanceFile.txt": definition of 3 artificial pesticides
+		
+	Landscape input files in the old file format (365 lines for each food source defined):
+		- "Input_2-1_FoodFlow.txt": simple landscape with 4 food sources
+		- "Input_2-1_FoodFlow_RRes.txt": realistic landscape from Hertfordshire, UK, with 115 food sources
+	
+	Landscape input files in a new file format (single line for each food source defined):
+		- "Sources_RedGreen.txt": 2 food sources & pesticide applications
+		- "Sources_RedGreenBlueYellow.txt": 4 food sources & pesticide applications
+		- "Sources_RRes.txt": like "Input_2-1_FoodFlow_RRes.txt" but in the new file format and with pesticide applications at all fields
+		- "Sources_RRes_PPP-Blue.txt": like "Sources_RRes.txt", but with pesticide applications only at "blue" fields
+		- "Sources_RRes_PPP-Red.txt": like "Sources_RRes.txt", but with pesticide applications only at "red" fields
+		- "Sources_RRes_PPP-Yellow.txt": like "Sources_RRes.txt", but with pesticide applications only at "yellow" fields
+
+
+
+
+
 
 ## Terms of use of the software BEEHAVEecotox (2021)
 BEEHAVEecotox (2021) is the implementation of an ecotoxicological module with the associated changes into the model BEEHAVE_BeeMapp2016, developed by Matthias Becher and colleagues (more information on this model is provided below).
@@ -57,3 +91,19 @@ A copy of the GNU General Public License can be found at http://www.gnu.org/lice
 * Please refer to the BEEHAVE publication (Becher et al. 2014; see above) and the BEEHAVE website (http://beehave-model.net/) when using BEEHAVE.
 * We recommend that any publication or report based on using BEEHAVE shall include, in the Supplementary Material, the very NetLogo file that was used to produce the corresponding figure, table, or other kinds of results, as well as the “Experiments” in the BehaviorSpace and all necessary input files (see Supplementary Material of Becher et al. 2013 as example).
 * You might want to modify the NetLogo code implementing BEEHAVE, for example by adding further outputs, or running specific scenarios. To check whether you are still using the original version of BEEHAVE click the “Version Test” button, which runs the model under specific settings and defined random numbers and informs the user if the code was changed. Note that not all changes to the code can be detected by this test. If you changed the code, we recommend to document these changes in all detail and to provide a revised ODD model description in which the modified or added elements are highlighted.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
